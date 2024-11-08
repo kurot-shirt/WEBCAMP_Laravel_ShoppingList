@@ -20,7 +20,7 @@ use App\Http\Controllers\ShoppingListController;
 //    return view('welcome');
 //});
 //買い物リスト
-Route::get('/', [AuthController::class, 'index'])->name('front.index');
+Route::get('/', [AuthController::class, 'index']);
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/shopping_list/list', [ShoppingListController::class, 'list']);
