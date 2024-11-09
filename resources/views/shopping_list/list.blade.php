@@ -6,7 +6,7 @@
 {{--メインコンテンツ--}}
 	<h1>「買うもの」の登録</h1>
 	    <form action="./top.html" method="post">
-	    	「買うもの」名:<input><br>
+	    	「買うもの」名:<input name="name"><br>
 	    	<button>「買うもの」を登録する</button>
 	    </form>
 	<h1>「買うもの」一覧</h1>
