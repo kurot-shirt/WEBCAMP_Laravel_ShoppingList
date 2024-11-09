@@ -28,13 +28,13 @@ class AuthController extends Controller
     	           ->withErrors(['auth' => 'emailかパスワードに誤りがあります',])//エラーメッセージの出力
     	           ;
     	}
-    	
+
     	//認証に成功した場合
     	$request->session()->regenerate();
-    	return redirect()->intended('front.list');
-    	
+    	return redirect()->intended(route('front.list'));
+
     }
-    
+
     //ログアウト処理
     public function logout(Request $request)
     {
