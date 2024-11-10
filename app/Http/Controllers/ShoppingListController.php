@@ -12,11 +12,15 @@ class ShoppingListController extends Controller
 {
     public function list()
     {
+        //1ページ辺りの表示アイテム数を設定
+        $per_page = 3;
+
         //一覧の取得
         $list = Shopping_listModel::where('user_id', Auth::id())
                                   ->orderBy('name','ASC')
                                   ->orderBy('created_at',)
-                                  ->get();
+                                  ->paginate($per_page);
+                                  //->get();
 
     	return view('shopping_list.list', ['list' => $list]);
     }
