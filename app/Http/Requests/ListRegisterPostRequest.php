@@ -14,7 +14,7 @@ class ListRegisterPostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'max:128'],
+            'name' => ['required', 'max:255'],
         ];
     }
 }

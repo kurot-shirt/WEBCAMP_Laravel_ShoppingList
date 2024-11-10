@@ -17,7 +17,7 @@
 	        </div>
 	    <form action="/shopping_list/register" method="post">
 	    	@csrf
-	    	「買うもの」名:<input name="name"><br>
+	    	「買うもの」名:<input name="name" value="{{ old('name') }}"><br>
 	    	<button>「買うもの」を登録する</button>
 	    </form>
 	<h1>「買うもの」一覧</h1>
@@ -26,11 +26,13 @@
 	<tr>
 		<th>登録日
 		<th>「買うもの」名
+	@foreach ($list as $task)
 	<tr>
-		<td></td>
-		<td></td>
+		<td>{{ $task->created_at }}
+		<td>{{ $task->name }}
 		<td><form action="./top.html"><button>完了</button></form>
 		<td><form action="./top.html"><button>削除</button></form>
+	@endforeach
 	</table>
 	<!--ページネーション-->
 	現在 1 ページ目<br>
