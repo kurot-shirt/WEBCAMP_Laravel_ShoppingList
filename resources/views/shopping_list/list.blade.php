@@ -28,7 +28,7 @@
 		<th>「買うもの」名
 	@foreach ($list as $task)
 	<tr>
-		<td>{{ $task->created_at }}
+		<td>{{ $task->created_at->format('Y/m/d') }}
 		<td>{{ $task->name }}
 		<td><form action="./top.html"><button>完了</button></form>
 		<td><form action="./top.html"><button>削除</button></form>
