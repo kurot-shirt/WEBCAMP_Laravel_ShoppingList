@@ -21,8 +21,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-         Schema::table('shopping_lists', function (Blueprint $table) {
+        //
+        Schema::table('tasks', function (Buleprint $table) {
             $table->dropIndex('user_id');
         });
     }
+    
 };
