@@ -8,6 +8,7 @@ use App\Http\Requests\ListRegisterPostRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Shopping_list as Shopping_listModel;
+use App\Models\CompletedShoppingList as CompletedShoppingListModel;
 
 class ShoppingListController extends Controller
 {
@@ -69,7 +70,7 @@ class ShoppingListController extends Controller
     }
 
     //タスクの完了
-    public function complete($shopping_list_id)
+    public function complete(Request $request, $shopping_list_id)
     {
         //タスクを完了テーブルに移動させる
         try{
@@ -82,17 +83,30 @@ class ShoppingListController extends Controller
                 //shopping_list_idが不正なのでトランザクション終了
                 throw new \Exception('');
             }
-            var_dump($task->toArray()); exit;
+            //var_dump($task->toArray()); exit;
             //lists側を削除する
+            $task->delete();
+
             //completed_shopping_lists側にinsertする
+            $dask_datum = $task->toArray();
+            unset($dask_datum['created_at']);
+            unset($dask_datum['updated_at']);
+            $r = CompletedShoppingListModel::create($dask_datum);
+            if ($r === null) {
+                //insertで失敗したのでトランザクション終了
+                throw new \Exception('');
+            }
 
             //トランザクション終了
             DB::commit();
+            //完了メッセージ出力
+            $request->session()->flash('front.list_completed_success', true);
         } catch(\Throwable $e) {
             //トランザクション異常終了
             DB::rollBack();
         }
         //一覧に遷移する
+        return redirect('/shopping_list/list');
 
     }
     //削除処理

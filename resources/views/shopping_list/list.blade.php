@@ -8,6 +8,9 @@
 	    @if (session('front.list_register_success') == true)
 	        「買うもの」を登録しました!!<br>
 	    @endif
+	    @if (session('front.list_completed_success') == true)
+	        「買うもの」を完了にしました!!<br>
+	    @endif
 	    @if (session('front.list_delete_success') == true)
 	        「買うもの」を削除しました!!<br>
 	    @endif
@@ -24,7 +27,7 @@
 	    	<button>「買うもの」を登録する</button>
 	    </form>
 	<h1>「買うもの」一覧</h1>
-	<a href="./top.html">購入済み「買うもの」一覧</a><br>
+	<a href="/completed_shopping_list/list">購入済み「買うもの」一覧</a><br>
 	<table border="1">
 	<tr>
 		<th>登録日
@@ -35,9 +38,9 @@
 		<td>{{ $task->name }}
 		<td>
 			<form action="{{ route('complete', ['shopping_list_id' => $task->id]) }}" method="post">
-			@csrf
-			<button onclick='return confirm("この「買うもの」を「完了」にします。よろしいですか?");'>完了</button>
-		</form>
+			    @csrf
+			    <button onclick='return confirm("この「買うもの」を「完了」にします。よろしいですか?");'>完了</button>
+			</form>
 		<td>
 			<form action="{{ route('delete',['shopping_list_id' => $task->id]) }}" method="post">
 				@csrf
