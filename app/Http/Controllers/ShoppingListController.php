@@ -19,8 +19,8 @@ class ShoppingListController extends Controller
 
         //一覧の取得
         $list = Shopping_listModel::where('user_id', Auth::id())
-                                  ->orderBy('name','ASC')
-                                  ->orderBy('created_at',)
+                                  ->orderBy('name')
+                                  ->orderBy('created_at')
                                   ->paginate($per_page);
                                   //->get();
 
