@@ -13,7 +13,7 @@
         </div>
 	<form action="/user/register" method="post">
 		@csrf
-		name:<input name="name" value="{{ old('name') }}"><br>
+		名前:<input name="name" value="{{ old('name') }}"><br>
 		email:<input name="email" value="{{ old('email') }}"><br>
 		パスワード:<input name="password" type="password"><br>
 		パスワード(再度):<input name="password_confirmation" type="password"><br>

@@ -13,9 +13,9 @@
 		<th>購入した「買うもの」の数
 	@foreach ($users as $user)
 	<tr>
-		<th>{{ $user->id }}
-		<th>{{ $user->name }}
-		<th>{{ $user->task_num }}
+		<td>{{ $user->id }}
+		<td>{{ $user->name }}
+		<td>{{ $user->completed_shopping_list_num }}
 	@endforeach
 	</table>
 @endsection
