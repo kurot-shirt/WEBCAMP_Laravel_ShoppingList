@@ -1,4 +1,4 @@
-@extends('admin.layaot')
+@extends('admin.layout')
 
 {{--メインコンテンツ--}}
 @section('contets')

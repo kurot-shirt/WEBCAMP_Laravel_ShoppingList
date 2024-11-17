@@ -52,10 +52,10 @@ Route::prefix('/admin')->group(function () {
     Route::get('', [AdminAuthController::class, 'index'])->name('admin.index');
     Route::post('/login', [AdminAuthController::class, 'login'])->name('admin.login');
     //認可処理
-    //Route::middleware(['auth:admin'])->group(function () {
+    Route::middleware(['auth:admin'])->group(function () {
         Route::get('/top', [AdminHomeController::class, 'top'])->name('admin.top');
         route::get('/user/list', [AdminUserController::class, 'list'])->name('admin.user.list');
         //ログアウト
         Route::get('/logout', [AdminAuthController::class, 'logout']);
-    //});
+    });
 });

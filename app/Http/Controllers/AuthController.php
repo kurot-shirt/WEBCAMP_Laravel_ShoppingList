@@ -25,7 +25,7 @@ class AuthController extends Controller
     	if (Auth::attempt($datum) === false) {
     	    return back()
     	           ->withInput()//入力値の保持
-    	           ->withErrors(['auth' => 'emailかパスワードに誤りがあります',])//エラーメッセージの出力
+    	           ->withErrors(['auth' => 'emailかパスワードに誤りがあります。',])//エラーメッセージの出力
     	           ;
     	}
 

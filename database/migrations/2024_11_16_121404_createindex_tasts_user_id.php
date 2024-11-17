@@ -13,7 +13,7 @@ return new class extends Migration
     {
         //
         Schema::table('shopping_lists', function (Blueprint $table) {
-            $table->dropIndex('user_id');
+            $table->index('user_id');
         });
     }
 
