@@ -4,6 +4,7 @@
 @section('title')(一覧画面)@endsection
 
 {{--メインコンテンツ--}}
+@section('contets')
 	<h1>「買うもの」の登録</h1>
 	    @if (session('front.list_register_success') == true)
 	        「買うもの」を登録しました!!<br>
@@ -41,7 +42,7 @@
                  @csrf
                 <button onclick='return confirm("この「買うもの」を「完了」にします。よろしいですか?");' >完了</button>
             </form>
-	    <td>
+	    <td>　</td>
 	    <td>
 	    	<form action="{{ route('delete',['shopping_list_id' => $task->id]) }}" method="post">
 				@csrf
@@ -75,5 +76,4 @@
 	<menu label="リンク">
 	<a href="/logout">ログアウト</a><br>
 	</menu>
-</body>
-</html>
+@endsection
